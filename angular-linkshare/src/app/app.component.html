@@ -1,0 +1,33 @@
+<h1>Link Share</h1>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>User</th>
+    </tr>
+    <tr *ngFor="let link of links$ | async">
+        <td><a [href]="link.href">{{ link.title }}</a></td>
+        <td>{{ link.user }}</td>
+    </tr>
+</table>
+
+<h2>Share new link</h2>
+
+<form (submit)="onSubmit()">
+    <div>
+        <label for="href">Link</label>
+        <input type="text" name="href" id="href" [(ngModel)]="link.href" />
+    </div>
+    <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" [(ngModel)]="link.title" />
+    </div>
+    <div>
+        <label for="User">User</label>
+        <input type="text" name="user" id="user" [(ngModel)]="link.user" />
+    </div>
+
+    <div>
+        <button type="submit" (click)="onSubmit">Create</button>
+    </div>
+</form>
